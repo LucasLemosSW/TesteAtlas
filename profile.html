@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+        crossorigin="anonymous"
+    />
+    <script 
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+        crossorigin="anonymous">
+    </script>
+    <script 
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+        crossorigin="anonymous">
+    </script>
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+        crossorigin="anonymous">
+    </script>
+    <title>profile</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-warning mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">GitSearch</a>
+        </div>
+    </nav>
+    <div class="container card card-body p-0">
+        <div class="banner">
+            <div id="imagem-fundo"></div>
+            <div id="imagem-perfil"></div>
+            <div id="nome-perfil"></div>
+            <div id="dados-perfil"></div>
+        </div>
+        <div class="menu-descricao">
+            <div class="menu-nave">
+                <nav class="navbar navbar-light bg-light navegacao ">
+                    <a class="navbar-brand" href="#"></a>
+                    <a class="navbar-brand" href="#"></a>
+                    <a class="navbar-brand" href="#">Navbar2</a>
+                    <a class="navbar-brand" href="#">Navbar3</a>
+                </nav>
+            </div> 
+
+            <div class="projetos">
+
+                <div class="card card-body mb-2">
+                    <div class="row">
+                        <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
+                        <div class="col-md-6">
+                            <span class="badge-primary">starts: ${repo.stargazers_count}</span>
+                            <span class="badge-success">watchers: ${repo.watchers_count}</span>
+                            <span class="badge-warning">Forks: ${repo.forks_count}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-body mb-2">
+                    <div class="row">
+                        <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
+                        <div class="col-md-6">
+                            <span class="badge-primary">starts: ${repo.stargazers_count}</span>
+                            <span class="badge-success">watchers: ${repo.watchers_count}</span>
+                            <span class="badge-warning">Forks: ${repo.forks_count}</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+            <!-- <div id="profile" class="bio"></div>        -->
+        </div>
+    </div> 
+</body>
+<!-- <script src="main.js"></script> -->
+<script src="profile.js"></script>
+</html>
