@@ -6,3 +6,64 @@
 .hide{
     display: none;
 }
+.card{
+    
+    justify-content:center;
+    /* align-self: center; */
+}
+
+.card-perfil{
+    width: 10rem;
+    align-items: center;
+}
+
+.show-cards{
+    display: flex;
+    flex-direction: row;
+}
+
+.profiles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+
+.navbar-brand{
+    color: black
+}
+
+input.search-query {
+    padding-left:26px;
+}
+
+form.form-search {
+    position: relative;
+}
+
+form.form-search:before {
+    content:'';
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-image: url(http://getbootstrap.com/2.3.2/assets/img/glyphicons-halflings.png);
+    background-position: -48px 0;
+    position: absolute;
+    top:8px;
+    left:8px;
+    opacity: .5;
+    z-index: 1000;
+}
+
+.cabecalho{
+    justify-content: start;
+}
+
+.img-github{
+    margin-left: 10%;
+    width: 5%;
+}
+
+.profile{
+    align-items: center;
+}

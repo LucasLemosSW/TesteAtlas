@@ -28,21 +28,28 @@
     <title>GitSearch</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-warning mb-3">
-        <div class="container">
-            <a href="#" class="navbar-brand">GitSearch</a>
+    <nav class="navbar navbar-white text-black bg-white mb-3 shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="cabecalho">
+            <img src="./images/github_logo.png" class="img-github" alt="foto github">
+            <a href="../index.html" class="navbar-brand">GitSearch</a>
         </div>
     </nav>
     <div class="container">
         <div class="card card-body">
-            <h1>Pesquisar usuarios do Github</h1>
-            <p class="lead">
-                Digite um nome para encontrar usuarios e repositorios
-            </p>
-            <input id="search" type="text" class="form-control" required>
-            <button id="search_all">Ver todos</button>
-            <button id="search_each">Buscar</button>
-            <div id="profile"></div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h1>Search Results</h1>
+                    <form onsubmit="myFunction()" class="form-search form-inline">
+                        <input id="search" type="text" class="search-query" placeholder="Search..." />
+                   </form>
+                   <div>
+                        <button id="search_all">Ver todos</button>
+                        <button id="search_each">Buscar</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div id="profile" class="profiles"></div>
             <div id="carregando" class="hide">
                 <div  class="spinner-border text-dark " role="status">
                     <span class="sr-only">Loading...</span>
@@ -54,3 +61,4 @@
 </body>
 <script src="main.js"></script>
 </html>
+

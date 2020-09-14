@@ -41,23 +41,32 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         const allProfiles = await allProfilesResponse.json();
         return {allProfiles};
     }
+    
+    function showProfile(user,all){
+        console.log(all);
+        if(all){
+            profile.innerHTML +=    `<div class="card card-perfil" >
+                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
+                                        <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                    </div>
+                                <!--  
+                                    <div class="col-md-8">
+                                        <div id="repos"></div>
+                                    </div>
+                                -->`;
 
-    function showProfile(user){
-        profile.innerHTML += `
-        <div  class="row mt-3">
-            <div class="col-md8">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="${user.avatar_url}" alt="foto usuario">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span class="badge-success">${user.login}</span></li>
-                    </ul>
-                    <a href="profile.html?profile=${user.login}" target="_blanck">perfil</a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div id="repos"></div>
-            </div>
-        </div>`;
+        }else{
+            profile.innerHTML =    `<div class="card card-perfil" >
+                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
+                                        <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                    </div>
+                                <!--  
+                                    <div class="col-md-8">
+                                        <div id="repos"></div>
+                                    </div>
+                                -->`;
+        }
+
     }
 
     function showRepos(repos){
@@ -86,7 +95,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         if(user.length>0){
             getUser(user).then(res=> {
                 console.log(res.profile);
-                showProfile(res.profile);
+                showProfile(res.profile,false);
                 //showRepos(res.repos);
             });
         }
@@ -101,12 +110,13 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
     search_all.addEventListener("click", ()=>{
 
-        imgCarregadas=2;
+        imgCarregadas=10;
+        // profile= '';
         getAllUsers().then(res=> {
             for(cont=0;cont<imgCarregadas;cont++){
                 getUser(res.allProfiles[cont].login).then(res=> {
                     // console.log(res.profile);
-                    showProfile(res.profile);
+                    showProfile(res.profile,true);
                 });
             }
         });
@@ -116,13 +126,13 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         let imgCarregadasAtual=imgCarregadas;
         if($(this).scrollTop() + $(this).height() == $(document).height()) {
             loading.classList.remove("hide");
-            imgCarregadas+=2;
+            imgCarregadas+=10;
             getAllUsers().then(res=> {
                 for(cont=imgCarregadasAtual;cont<imgCarregadas;cont++){
                     getUser(res.allProfiles[cont].login).then(res=> {
                         loading.classList.add("hide");
                         console.log(res.profile);
-                        showProfile(res.profile);
+                        showProfile(res.profile,true);
                     });
                 }
             });
