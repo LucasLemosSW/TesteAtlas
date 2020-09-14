@@ -3,9 +3,6 @@
     margin: 10em;
 }
 
-.hide{
-    display: none;
-}
 .card{
     
     justify-content:center;
@@ -13,7 +10,8 @@
 }
 
 .card-perfil{
-    width: 10rem;
+    width: 20%;
+    height: 15rem;
     align-items: center;
 }
 
@@ -26,7 +24,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: yellow;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellow; */
+    width: 90%;
+    align-self: center;
+    margin-top: 5%;
 }
 
 .navbar-brand{
@@ -63,7 +66,76 @@ form.form-search:before {
     margin-left: 10%;
     width: 5%;
 }
+.busca{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-.profile{
+
+
+.home{
+    width: 100vw;
+    height: 100vh;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.box {
+    width: 420px;
+    height: 377px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+}
+
+/* geral start */
+.hide{
+    display: none;
+}
+
+#search_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 0;
+    width: 100%;
+}
+
+#search_all_home{
+    width: 45%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height, or 137% */
+
+    text-align: center;
+
+    /* Base Colors / White */
+
+    color: #FFFFFF;
+    background: #344FA5;
+}
+
+#search_each{
+    width: 45%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height, or 137% */
+
+    text-align: center;
+
+    /* Base Colors / White */
+
+    color: #FFFFFF;
+    background: #6FCF97;
 }

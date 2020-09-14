@@ -7,13 +7,20 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
     const count = 7;
     const sort ="created: asc";
+
+    const cabecalho = document.getElementById("cabecalho");
+    const main= document.getElementById("main");
+    const home= document.getElementById("home");
     
     const perfil = document.getElementById("perfil");
     const loading= document.getElementById("carregando");
     const search= document.getElementById("search");
+    const search_home= document.getElementById("search_home");
+    
     const buttonProfile= document.getElementById("buttonProfile");
     const profile= document.getElementById("profile");
-    const search_all= document.getElementById("search_all");
+    const search_all_main= document.getElementById("search_all");
+    const search_all_home= document.getElementById("search_all_home");
     const search_each= document.getElementById("search_each");
     var imgCarregadas=2;
 
@@ -89,8 +96,17 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         document.getElementById("repos").innerHTML=output;
     }
 
+    search_each.addEventListener("click",()=>{
+        saiDaHome();
+        procuraEspecifico(search_home.value);
+    })
+
     search.addEventListener("keyup", (e)=>{
         const user = e.target.value;
+        procuraEspecifico(user);
+    });
+    
+    function procuraEspecifico(user){
 
         if(user.length>0){
             getUser(user).then(res=> {
@@ -100,7 +116,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             });
         }
             
-    })
+    }
 
     $('#profile').on('click', '#perfil', function (event) {
         var botao = $(event);
@@ -108,10 +124,15 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         console.log(botao);
     });
 
-    search_all.addEventListener("click", ()=>{
+    // search_all_main.addEventListener("click",procura);
+    search_all_home.addEventListener("click",procuraTodos);
+    
+    function procuraTodos(){
 
+        console.log("AQUI");
+        saiDaHome();
         imgCarregadas=10;
-        // profile= '';
+        profile.innerHTML= '';
         getAllUsers().then(res=> {
             for(cont=0;cont<imgCarregadas;cont++){
                 getUser(res.allProfiles[cont].login).then(res=> {
@@ -120,7 +141,13 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                 });
             }
         });
-    })
+    }
+
+    function saiDaHome(){
+        home.classList.add("hide");
+        main.classList.remove("hide");
+        cabecalho.classList.remove("hide");
+    }
 
     $(window).scroll(function() {
         let imgCarregadasAtual=imgCarregadas;
