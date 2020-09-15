@@ -4,9 +4,7 @@
 }
 
 .card{
-    
     justify-content:center;
-    /* align-self: center; */
 }
 
 .card-perfil{
@@ -58,14 +56,6 @@ form.form-search:before {
     z-index: 1000;
 }
 
-.cabecalho{
-    justify-content: start;
-}
-
-.img-github{
-    margin-left: 10%;
-    width: 5%;
-}
 .busca{
     display: flex;
     flex-direction: row;

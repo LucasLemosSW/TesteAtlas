@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../cabecalho.css">
+
     <link 
         rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
@@ -29,71 +31,141 @@
     <title>profile</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-warning mb-3">
-        <div class="container">
-            <a href="../index.html" class="navbar-brand">GitSearch</a>
-        </div>
-    </nav>
+
+    <!-- Cabeçalho -->
+    <div id="cabecalho" >
+        <nav class="navbar navbar-white text-black bg-white mb-3 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="cabecalho">
+                <img src="../images/github_logo.png" class="img-github" alt="foto github">
+                <a href="./index.html" class="navbar-brand">GitSearch</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Cabeçalho -->
+
+    <!-- Card de conteudo -->
     <div class="container card card-body p-0">
+
+        <!-- Banner -->
         <div class="banner">
-            <div id="imagem-fundo">
-                <!-- <img src="../images/banner-fundo.jpg" alt="imagem de perfil"> -->
-                <div id="nome-perfil">
-                    <h1>Julia</h1>
-                    <p>nick</p>
+            <div id="nome-imagem-perfil">
+                <img id = "img-perfil" class="card-img-top rounded-circle " src="../images/banner-fundo.jpg" alt="foto usuario">
+                <div class="nome-nick">
+                    <h1>Julia Paez</h1>
+                    <div>
+                        <img class="img-icones" src="../images/nick.png" alt="projetos">
+                        <h8>Nick</h8>
+                    </div>
                 </div>
             </div>
-            <div id="imagem-perfil"></div>
-            <div id="dados-perfil"></div>
+            <div id="dados-perfil">
+                <div>
+                    <div style="display: flex;">
+                        <img class="img-icones" src="../images/seguindo.png" alt="seguindo">
+                        <h8>85</h8>
+                    </div>
+                        <h6>Seguindo</h6>
+                </div>
+                <div>
+                    <div style="display: flex;">
+                        <img class="img-icones" src="../images/projetos.png" alt="projetos">
+                        <h8>54885</h8>
+                    </div>
+                    <h6>Projetos</h6>
+                </div>
+                <div>
+                    <div style="display: flex;">
+                        <img class="img-icones" src="../images/seguidores.png" alt="projetos">
+                        <h8>8845</h8>
+                    </div>
+                    <h6>Seguidores</h6>
+                </div>
+            </div>
         </div>
+        <!-- Banner -->
+
         <div class="menu-descricao">
+
+            <!-- SideBar -->
+
             <div class="menu-nave">
-                <nav class="navbar navbar-light bg-light navegacao ">
-                    <br><br>
-                    <a id="selectSobre" class="navbar-brand" >Sobre</a>
-                    <a id="selectProjetos" class="navbar-brand" >Projetos</a>
+                <nav class="navbar navegacao ">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a id="selectSobre" class="navbar-brand" >Sobre</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a id="selectProjetos" class="navbar-brand" >Projetos</a>
+                        </li>
+                    </ul>
                 </nav>
-            </div> 
+            </div>
 
-            <div class="projetos-biografia">
+            <!-- SideBar -->
 
-                <div id="biografia">
-                    <div class="card card-body mb-2">
-                        <div class="row">
-                            <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
-                            <div class="col-md-6">
-                                <span class="badge-primary">starts: ${repo.stargazers_count}</span>
-                                <span class="badge-success">watchers: ${repo.watchers_count}</span>
-                                <span class="badge-warning">Forks: ${repo.forks_count}</span>
+            <!-- Conteudo -->
+            <div class="projetos-biografia card card-body">
+
+                <!-- Retositorios -->
+                <div id="projetos">
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>titulo repo</h4>
+                                    <p>descricao do repo</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Linguagem</p>
+                                    <p>data</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-body mb-2">
-                        <div class="row">
-                            <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
-                            <div class="col-md-6">
-                                <span class="badge-primary">starts: ${repo.stargazers_count}</span>
-                                <span class="badge-success">watchers: ${repo.watchers_count}</span>
-                                <span class="badge-warning">Forks: ${repo.forks_count}</span>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>titulo repo</h4>
+                                    <p>descricao do repo</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Linguagem</p>
+                                    <p>data</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+
                 </div>
-
+                <!-- Retositorios -->
                 
-                <div id="projetos" class="hide">
-                    <h1>Bio</h1>
-                    <p>TExto sobre a pessoa</p>
-                    <br>
-                    <a href="#"> Cidade</a>
-                    <a href="#">Link do perfil</a>
+
+                <!-- Biografia -->
+                <div id="biografia" class="hide">
+                    <div class="col">
+                        <h1>Bio</h1>
+                        <p>TExto sobre a pessoa</p>
+                    </div>
+                    <div>
+                        <div style="display: flex;">
+                            <img class="img-icones" src="../images/home.png" alt="Cidade">
+                            <a href="#"> Cidade</a>
+                        </div>
+                        <div style="display: flex;">
+                            <img class="img-icones" src="../images/url.png" alt="Cidade">
+                            <a href="#"> Link do perfil</a>
+                        </div>
+                    </div>
                 </div>
+                <!-- Biografia -->
             
             </div>
-            <!-- <div id="profile" class="bio"></div>        -->
+            <!-- Conteudo -->
+
         </div>
     </div> 
+    <!-- Card de conteudo -->
+
 </body>
 <script src="profile.js"></script>
 </html>

@@ -4,14 +4,7 @@
 }
 /* Geral start */
 
-/* --------------- */
-
-/* cabeçalho start*/
-/* cabeçalho end*/
-
-/* -------------- */
-
-/* conteudo */
+/* Card de conteudo */
 
 /* Banner start*/
 .banner{
@@ -20,30 +13,52 @@
     justify-content: space-between;
     width: 100%;
     height: 200px;
-    background-color: blue;
+    /* background-color: blue; */
     background-image: url("../images/banner-fundo.jpg");
     background-repeat:no-repeat;
     background-position:90% 100%;
     background-size:100%;
 }
 
-#imagem-fundo{
+#nome-imagem-perfil{
     display: flex;
+    flex-direction: row;
     width: 40%;
-    height: 50%;
-    background-color: black;
+    height: 60%;
+    /* background-color: aqua; */
+}
+
+#img-perfil{
+    position: relative;
+    border:8px solid gray;
+    width: 35%;
+    margin-left: 10%;
+    margin-right: 10%;
+    top: 50%;
+}
+
+.nome-nick{
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+}
+
+.img-icones{
+    padding: 5px;
 }
 
 #dados-perfil{
     display: flex;
-    width: 40%;
+    justify-content: space-between;
+    width: 30%;
     height: 25%;
-    background-color: red;
+    /* background-color: red; */
 }
 /* Banner end*/
 
 /* SideBar start */
 .menu-nave{
+    margin-top: 10%;
     width: 20%;
 }
 .navegacao{
