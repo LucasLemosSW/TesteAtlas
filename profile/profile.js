@@ -6,10 +6,11 @@ const sort ="created: asc";
 
 (function(){
 
-    const profile= document.getElementById("profile");
+    const nomeImagemPerfil= document.getElementById("nome-imagem-perfil");
+    const dadosPerfil= document.getElementById("dados-perfil");
     const biografia= document.getElementById("biografia");
+    
     const projetos= document.getElementById("projetos");
-
     const selectSobre= document.getElementById("selectSobre");
     const selectProjetos= document.getElementById("selectProjetos");
 
@@ -35,7 +36,7 @@ const sort ="created: asc";
     }
 
     var usuario = queryString("profile");
-    console.log(usuario);
+    // console.log(usuario);
 
     async function getUser(user){
         const profileResponse = await fetch(
@@ -51,27 +52,11 @@ const sort ="created: asc";
         return {profile,repos};
     }
 
-    function showProfile(user){
-        profile.innerHTML += `
-        <div  class="row mt-3 ml-0">
-            <div class="col-md8">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="${user.avatar_url}" alt="foto usuario">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span class="badge-success">${user.login}</span></li>
-                    </ul>
-                    <a href="profile.html?profile=${user.login}" target="_blanck">perfil</a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div id="repos"></div>
-            </div>
-        </div>`;
-    }
-
     getUser(usuario).then(res=> {
         console.log(res.profile);
         showProfile(res.profile);
+        showFollower(res.profile);
+        showBio(res.profile);
     });
 
     selectSobre.addEventListener("click", ()=>{
@@ -83,5 +68,74 @@ const sort ="created: asc";
         projetos.classList.remove("hide");
         biografia.classList.add("hide");
     });
+
+    function showProfile(user){
+        nomeImagemPerfil.innerHTML = `
+                <img id = "img-perfil" class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
+                <div class="nome-nick">
+                    <h1>${user.name}</h1>
+                    <div>
+                        <img class="img-icones" src="../images/nick.png" alt="projetos">
+                        <h8>${user.login}</h8>
+                    </div>
+                </div>`;
+    }
+
+    function showFollower(user){
+        dadosPerfil.innerHTML = `
+        <div class="nome-nick">
+            <div style="display: flex; justify-content: center; align-items: center; height: 50%;">
+                <img class="img-icones" src="../images/seguindo.png" alt="seguindo">
+                <h8>${user.following}</h8>
+            </div>
+            <h6>Seguindo</h6>
+        </div>
+        <div class="nome-nick">
+            <div style="display: flex; justify-content: center; align-items: center; height: 50%;">
+                <img class="img-icones" src="../images/projetos.png" alt="projetos">
+                <h8>${user.public_repos}</h8>
+            </div>
+            <h6>Projetos</h6>
+        </div>
+        <div class="nome-nick">
+            <div class="seguindo-projetos-seguidores" >
+                <img class="img-icones" src="../images/seguidores.png" alt="seguidores">
+                <h8>${user.followers}</h8>
+            </div>
+            <h6>Seguidores</h6>
+        </div>`;
+    }
+
+    function showBio(user){
+        let bio='',local='',blog='';
+        if(user.bio==null)
+            bio="Não há biografia =/";
+        else
+            bio=user.bio;
+        
+        if(user.location==null)
+            local="Localidade não informada";
+        else
+            local=user.location;
+        if(user.blog==null)
+            blog="Não possui blog";
+        else
+            blog=user.blog;
+        biografia.innerHTML =`                    
+        <div>
+            <h1>Bio</h1>
+            <p>${bio}</p>
+        </div>
+        <div>
+            <div style="display: flex;">
+                <img class="img-icones" src="../images/home.png" alt="Cidade">
+                <a href="#"> ${local}</a>
+            </div>
+            <div style="display: flex;">
+                <img class="img-icones" src="../images/url.png" alt="Cidade">
+                <a href="${blog}"> ${blog}</a>
+            </div>
+        </div>`;
+    }
 
 })();

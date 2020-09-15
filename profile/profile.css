@@ -45,13 +45,21 @@
 
 .img-icones{
     padding: 5px;
+    padding-left: 0;
+}
+
+.seguindo-projetos-seguidores{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 50%;
 }
 
 #dados-perfil{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 30%;
-    height: 25%;
+    height: 30%;
     /* background-color: red; */
 }
 /* Banner end*/

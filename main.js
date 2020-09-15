@@ -56,22 +56,14 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                                         <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
                                         <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
                                     </div>
-                                <!--  
-                                    <div class="col-md-8">
-                                        <div id="repos"></div>
-                                    </div>
-                                -->`;
+                                `;
 
         }else{
             profile.innerHTML =    `<div class="card card-perfil" >
                                         <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
                                         <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
                                     </div>
-                                <!--  
-                                    <div class="col-md-8">
-                                        <div id="repos"></div>
-                                    </div>
-                                -->`;
+                                `;
         }
 
     }
