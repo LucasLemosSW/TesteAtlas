@@ -2,7 +2,6 @@ const url = "https://api.github.com/users";
 const client_id = "Iv1.3b752cd81db99f9c";
 const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 const count = 8;
-const sort ="created: asc";
 
 (function(){
 
@@ -17,8 +16,30 @@ const sort ="created: asc";
     const selectProjetos= document.getElementById("selectProjetos");
 
     var renderInit=8;
+    var usuario = queryString("profile");
 
-    
+    selectSobre.addEventListener("click", ()=>{
+        projetos.classList.add("hide");
+        biografia.classList.remove("hide");
+    });
+
+    selectProjetos.addEventListener("click", ()=>{
+        projetos.classList.remove("hide");
+        biografia.classList.add("hide");
+    });
+
+    $(window).scroll(function() {
+        
+        if($(this).scrollTop() + $(this).height() == $(document).height()) {
+            renderInit+=8;
+            carregando.classList.remove("hide");
+            // carregando.classList.add("carregando");
+            getUserRepo(usuario).then(res=> {
+                showRepos(res.repos,renderInit);
+                carregando.classList.add("hide");
+            });
+        }
+    });
 
     // função pra ler querystring
     function queryString(parameter) {  
@@ -38,17 +59,14 @@ const sort ="created: asc";
             return undefined;   
         }   
     }
-
-    var usuario = queryString("profile");
-    // console.log(usuario);
-
-    async function getUser(user){
+    
+    // função para pegar o perfil e repositorios de um usuario
+    async function getUserRepo(user){
         const profileResponse = await fetch(
             `${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`
         );
 
         const repoResponse = await fetch (
-            // `${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}&client_secret=${client_secret}`
             `${url}/${user}/repos?per_page=500&client_id=${client_id}&client_secret=${client_secret}`
         );
         
@@ -57,35 +75,12 @@ const sort ="created: asc";
         return {profile,repos};
     }
 
-    getUser(usuario).then(res=> {
-        // console.log(res.repos);
+    getUserRepo(usuario).then(res=> {
+        // console.log(res);
         showProfile(res.profile);
         showFollower(res.profile);
         showBio(res.profile);
         showRepos(res.repos,renderInit);
-    });
-
-    selectSobre.addEventListener("click", ()=>{
-        projetos.classList.add("hide");
-        biografia.classList.remove("hide");
-    });
-
-    selectProjetos.addEventListener("click", ()=>{
-        projetos.classList.remove("hide");
-        biografia.classList.add("hide");
-    });
-
-    $(window).scroll(function() {
-        
-        if($(this).scrollTop() + $(this).height() == $(document).height()) {
-            renderInit+=8;
-            carregando.classList.remove("hide");
-            // carregando.classList.add("carregando");
-            getUser(usuario).then(res=> {
-                showRepos(res.repos,renderInit);
-                carregando.classList.add("hide");
-            });
-        }
     });
 
     function showProfile(user){
@@ -186,7 +181,7 @@ const sort ="created: asc";
                             </div>
                             <div class="col-md-3" >
                                 <p>${language}</p>
-                                <p>Atualizado em ${date.getUTCDay()}/${date.getUTCMonth()}/${date.getUTCFullYear()}</p>
+                                <p>Atualizado em ${date.getUTCDay()}/${date.getUTCMonth()+1}/${date.getUTCFullYear()}</p>
                             </div>
                         </div>
                     </li>`;                

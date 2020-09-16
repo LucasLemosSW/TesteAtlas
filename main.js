@@ -31,13 +31,14 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             `${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`
         );
 
-        const repoResponse = await fetch (
-            `${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}&client_secret=${client_secret}`
-        );
+        // const repoResponse = await fetch (
+        //     `${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}&client_secret=${client_secret}`
+        // );
         
         const profile = await profileResponse.json();
-        const repos = await repoResponse.json();
-        return {profile,repos};
+        // const repos = await repoResponse.json();
+        // return {profile,repos};
+        return {profile};
     }
 
     async function getAllUsers(){
@@ -50,44 +51,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         return {allProfiles};
     }
     
-    function showProfile(user,all){
-        // console.log(all);
-        if(all){
-            profile.innerHTML +=    `<div class="card card-perfil" >
-                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
-                                        <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
-                                    </div>
-                                `;
 
-        }else{
-            profile.innerHTML =    `<div class="card card-perfil" >
-                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
-                                        <a class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
-                                    </div>
-                                `;
-        }
-
-    }
-
-    // function showRepos(repos){
-    //     let output ='';
-
-    //     repos.forEach(repo =>{
-    //         output+=`
-    //         <div class="card card-body mb-2">
-    //             <div class="row">
-    //                 <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
-    //                 <div class="col-md-6">
-    //                     <span class="badge-primary">starts: ${repo.stargazers_count}</span>
-    //                     <span class="badge-success">watchers: ${repo.watchers_count}</span>
-    //                     <span class="badge-warning">Forks: ${repo.forks_count}</span>
-    //                 </div>
-    //             </div>
-    //         </div>`;
-    //     });
-
-    //     document.getElementById("repos").innerHTML=output;
-    // }
 
     search_each.addEventListener("click",()=>{
         saiDaHome();
@@ -98,17 +62,6 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         const user = e.target.value;
         procuraEspecifico(user);
     });
-    
-    function procuraEspecifico(user){
-
-        if(user.length>0){
-            getUser(user).then(res=> {
-                // console.log(res.profile);
-                showProfile(res.profile,false);
-            });
-        }
-            
-    }
 
     $('#profile').on('click', '#perfil', function (event) {
         var botao = $(event);
@@ -116,29 +69,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         console.log(botao);
     });
 
-    // search_all_main.addEventListener("click",procura);
     search_all_home.addEventListener("click",procuraTodos);
-    
-    function procuraTodos(){
-        saiDaHome();
-        imgCarregadas=10;
-        profile.innerHTML= '';
-        getAllUsers().then(res=> {
-            for(cont=0;cont<imgCarregadas;cont++){
-                getUser(res.allProfiles[cont].login).then(res=> {
-                    // console.log(res.profile);
-                    showProfile(res.profile,true);
-                });
-            }
-        });
-    }
-
-    function saiDaHome(){
-        home.classList.add("hide");
-        main.classList.remove("hide");
-        cabecalho.classList.remove("hide");
-        bloco.classList.remove("hide");
-    }
 
     $(window).scroll(function() {
         let imgCarregadasAtual=imgCarregadas;
@@ -161,6 +92,57 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             });
         }
     });
+
+    function procuraEspecifico(user){
+
+        if(user.length>0){
+            getUser(user).then(res=> {
+                // console.log(res.profile);
+                showProfile(res.profile,false);
+            });
+        }
+            
+    }
+    
+    function procuraTodos(){
+        saiDaHome();
+        imgCarregadas=10;
+        profile.innerHTML= '';
+        getAllUsers().then(res=> {
+            for(cont=0;cont<imgCarregadas;cont++){
+                getUser(res.allProfiles[cont].login).then(res=> {
+                    // console.log(res.profile);
+                    showProfile(res.profile,true);
+                });
+            }
+        });
+    }
+
+    function saiDaHome(){
+        home.classList.add("hide");
+        main.classList.remove("hide");
+        cabecalho.classList.remove("hide");
+        bloco.classList.remove("hide");
+    }
+
+    function showProfile(user,all){
+        // console.log(all);
+        if(all){
+            profile.innerHTML +=    `<div id="card-perfil-mobile" class=" card card-perfil" >
+                                        <img id="img-perfil-card"class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
+                                        <a id="label-perfil-card" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                    </div>
+                                `;
+
+        }else{
+            profile.innerHTML =    `<div id="card-perfil-mobile-busca" class="card card-perfil" >
+                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
+                                        <a id="label-perfil-card" class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                    </div>
+                                `;
+        }
+
+    }
 
 })();
 

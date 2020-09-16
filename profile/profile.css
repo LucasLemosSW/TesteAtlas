@@ -1,15 +1,22 @@
+
+/* Geral*/
 html{
     font-family: 'Montserrat', sans-serif;
 }
-/* Geral start */
+
 .hide{
     display: none;
 }
-/* Geral start */
+
+.menu-descricao{
+    display: flex;
+    flex-direction:row;
+}
+/* Geral*/
 
 /* Card de conteudo */
 
-/* Banner start*/
+/* Banner*/
 .banner{
     display: flex;
     align-items: flex-end;
@@ -37,7 +44,7 @@ html{
 
 #img-perfil{
     position: relative;
-    border:5px solid gray;
+    border:5px solid lightgray;
     width: 80%;
     margin-left:10%;
     top: 10%;
@@ -71,9 +78,9 @@ html{
     height: 30%;
     /* background-color: red; */
 }
-/* Banner end*/
+/* Banner*/
 
-/* SideBar start */
+/* SideBar */
 .button-tab-bar{
     display: inline-block;
     background-color: #F7F9FA;
@@ -99,9 +106,9 @@ html{
     display: flex;
     flex-direction:column;
 }
-/* SideBar end */
+/* SideBar */
 
-/* Bio start*/
+/* Bio */
 
 .projetos-biografia{
     display: flex;
@@ -132,10 +139,9 @@ html{
     font-weight: 600;
     font-size: 18px;
 }
+/* Bio */
 
-/* Bio end*/
-
-/* Projetos start */
+/* Projetos */
 .col-md-8 a{
     font-family: Montserrat;
     font-style: normal;
@@ -160,12 +166,35 @@ html{
     font-size: 8px;
     line-height: 7px;
 }
+/* Projetos */
 
-/* Projetos start */
 /* conteudo end*/
 
-.menu-descricao{
-    display: flex;
-    flex-direction:row;
-}
 
+
+@media(max-width: 481px){
+    .menu-descricao{
+        flex-direction: column;
+    }
+    .menu-nave{
+        width: 100%;
+    }
+    .menu-descricao ul{
+        flex-direction: row;
+        align-content: center;
+    }
+     #repositorios{
+        flex-direction: column;
+     }
+     .projetos-biografia{
+         width: 100%;
+     }
+
+     #nome-imagem-perfil{
+         display: none;
+     }
+
+     #dados-perfil{
+        display: none;
+    }
+}
