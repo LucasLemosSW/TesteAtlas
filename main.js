@@ -11,6 +11,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     const cabecalho = document.getElementById("cabecalho");
     const main= document.getElementById("main");
     const home= document.getElementById("home");
+    const bloco= document.getElementById("bloco");
     
     const perfil = document.getElementById("perfil");
     const loading= document.getElementById("carregando");
@@ -50,7 +51,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     }
     
     function showProfile(user,all){
-        console.log(all);
+        // console.log(all);
         if(all){
             profile.innerHTML +=    `<div class="card card-perfil" >
                                         <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
@@ -68,25 +69,25 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
     }
 
-    function showRepos(repos){
-        let output ='';
+    // function showRepos(repos){
+    //     let output ='';
 
-        repos.forEach(repo =>{
-            output+=`
-            <div class="card card-body mb-2">
-                <div class="row">
-                    <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
-                    <div class="col-md-6">
-                        <span class="badge-primary">starts: ${repo.stargazers_count}</span>
-                        <span class="badge-success">watchers: ${repo.watchers_count}</span>
-                        <span class="badge-warning">Forks: ${repo.forks_count}</span>
-                    </div>
-                </div>
-            </div>`;
-        });
+    //     repos.forEach(repo =>{
+    //         output+=`
+    //         <div class="card card-body mb-2">
+    //             <div class="row">
+    //                 <div class="col-md-6"><a href="${repo.html_url}" target="_black">${repo.name}</a></div>
+    //                 <div class="col-md-6">
+    //                     <span class="badge-primary">starts: ${repo.stargazers_count}</span>
+    //                     <span class="badge-success">watchers: ${repo.watchers_count}</span>
+    //                     <span class="badge-warning">Forks: ${repo.forks_count}</span>
+    //                 </div>
+    //             </div>
+    //         </div>`;
+    //     });
 
-        document.getElementById("repos").innerHTML=output;
-    }
+    //     document.getElementById("repos").innerHTML=output;
+    // }
 
     search_each.addEventListener("click",()=>{
         saiDaHome();
@@ -102,9 +103,8 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
         if(user.length>0){
             getUser(user).then(res=> {
-                console.log(res.profile);
+                // console.log(res.profile);
                 showProfile(res.profile,false);
-                //showRepos(res.repos);
             });
         }
             
@@ -120,8 +120,6 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     search_all_home.addEventListener("click",procuraTodos);
     
     function procuraTodos(){
-
-        console.log("AQUI");
         saiDaHome();
         imgCarregadas=10;
         profile.innerHTML= '';
@@ -139,6 +137,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         home.classList.add("hide");
         main.classList.remove("hide");
         cabecalho.classList.remove("hide");
+        bloco.classList.remove("hide");
     }
 
     $(window).scroll(function() {
@@ -147,12 +146,17 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             loading.classList.remove("hide");
             imgCarregadas+=10;
             getAllUsers().then(res=> {
+                
                 for(cont=imgCarregadasAtual;cont<imgCarregadas;cont++){
-                    getUser(res.allProfiles[cont].login).then(res=> {
+                    if(imgCarregadasAtual<res.allProfiles.length){
+                        getUser(res.allProfiles[cont].login).then(res=> {
+                            showProfile(res.profile,true);
+                            loading.classList.add("hide");
+                        });
+                    }else{
+                        // console.log("É maior");
                         loading.classList.add("hide");
-                        console.log(res.profile);
-                        showProfile(res.profile,true);
-                    });
+                    }
                 }
             });
         }

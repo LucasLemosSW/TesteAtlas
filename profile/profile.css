@@ -1,3 +1,6 @@
+html{
+    font-family: 'Montserrat', sans-serif;
+}
 /* Geral start */
 .hide{
     display: none;
@@ -23,24 +26,30 @@
 #nome-imagem-perfil{
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 60%;
     height: 60%;
     /* background-color: aqua; */
 }
 
+#container-img-perfil{
+    width: 33.3%;
+}
+
 #img-perfil{
     position: relative;
-    border:8px solid gray;
-    width: 35%;
-    margin-left: 10%;
-    margin-right: 10%;
-    top: 50%;
+    border:5px solid gray;
+    width: 80%;
+    margin-left:10%;
+    top: 10%;
+    /* background-color: red; */
+    
 }
 
 .nome-nick{
     display: flex;
     flex-direction: column; 
     justify-content: flex-end;
+    /* background-color: green; */
 }
 
 .img-icones{
@@ -58,13 +67,30 @@
 #dados-perfil{
     display: flex;
     justify-content: space-around;
-    width: 30%;
+    width: 40%;
     height: 30%;
     /* background-color: red; */
 }
 /* Banner end*/
 
 /* SideBar start */
+.button-tab-bar{
+    display: inline-block;
+    background-color: #F7F9FA;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10;
+    width: 100%;
+    font-weight: 800;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .400rem .90rem;
+    font-size: 1.2rem;
+    line-height: 2;
+    /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
 .menu-nave{
     margin-top: 10%;
     width: 20%;
@@ -77,23 +103,69 @@
 
 /* Bio start*/
 
-.bio{
-    width: 100%;
-    background-color: aqua;
-}
-
 .projetos-biografia{
     display: flex;
     flex-direction:column;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: normal;
 }
+.biografia{
+    padding: 5%;
+    font-family: Montserrat;
+    font-style: normal;
+}
+
+.biografia h2{
+    color: #162668;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    }
+.biografia p{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+}
+.biografia a{
+    font-weight: 600;
+    font-size: 18px;
+}
+
 /* Bio end*/
+
+/* Projetos start */
+.col-md-8 a{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color:#0366D6;
+}
+.col-md-8 p{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 21px;
+    padding-left: 3%;
+}
+
+.col-md-3 p{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 7px;
+}
+
+/* Projetos start */
 /* conteudo end*/
-
-
-
-
 
 .menu-descricao{
     display: flex;
     flex-direction:row;
 }
+

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="cabecalho.css">
+    <link rel="stylesheet" href="loading.css">
     <link 
         rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
@@ -47,17 +48,13 @@
                             <form onsubmit="myFunction()" class="form-search form-inline">
                                 <input id="search" type="text" class="search-query" placeholder="Search..." />
                             </form>
-                            <!-- <div id="search_buttons" class="hide">
-                                <button id="search_all">Ver todos</button>
-                                <button id="search_each">Buscar</button>
-                            </div> -->
                         </div>
                     </div>
                 </li>
             </ul>
 
             <div id="profile" class="profiles"></div>
-            <div id="carregando" class="hide">
+            <div id="carregando" class="carregando hide">
                 <div  class="spinner-border text-dark " role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
@@ -78,6 +75,8 @@
                 </div>
         </div>
     </div>
+
+    <div id="bloco" class="hide"></div>
 
 </body>
 <script src="main.js"></script>
