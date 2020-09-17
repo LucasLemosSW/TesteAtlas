@@ -93,12 +93,17 @@ const count = 8;
     });
 
     function showProfile(user){
+        let nome;
+        if(user.name==null)
+            nome=user.login;
+        else
+            nome=user.name;
         let stringBlocoHtml=`
                 <div id="container-img-perfil">
                     <img id = "img-perfil" class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
                 </div>
                 <div class="nome-nick" >
-                    <h1>${user.name}</h1>
+                    <a href="https://github.com/${user.login}"><h1>${nome}</h1></a>
                     <div>
                         <img class="img-icones" src="../images/nick_mobile.png" alt="projetos">
                         <h6>${user.login}</h6>
@@ -136,20 +141,25 @@ const count = 8;
     }
 
     function showBio(user){
-        let bio='',local='',blog='';
+        console.log(user);
+        let bio='',local='',blog='',blog_link='';
+
         if(user.bio==null)
             bio="Não há biografia =/";
         else
             bio=user.bio;
         
         if(user.location==null)
-            local="Localidade não informada";
+            local="Não informada";
         else
             local=user.location;
-        if(user.blog==null)
-            blog="Não possui blog";
+        if(user.blog==null || user.blog==""){
+            blog="...";
+            blog_link="#";
+        }
         else
             blog=user.blog;
+
         biografia.innerHTML =`                    
         <div>
             <h2>Bio</h2>
@@ -162,7 +172,7 @@ const count = 8;
             </div>
             <div style="display: flex;">
                 <img class="img-icones" src="../images/url.png" alt="Cidade">
-                <a href="${blog}"> ${blog}</a>
+                <a href="${blog_link}"> ${blog}</a>
             </div>
         </div>`;
     }

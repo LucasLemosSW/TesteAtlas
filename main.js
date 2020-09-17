@@ -70,7 +70,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             getAllUsers().then(res=> {
 
                 if(imgCarregadas<res.allProfiles.length){
-                    loading.classList.remove("hide");
+                    loading.classList.replace('hide', 'carregando');
                     imgCarregadas+=10;
                     for(cont=imgCarregadasAtual;cont<imgCarregadas;cont++){
                         if(imgCarregadasAtual<res.allProfiles.length){
@@ -87,7 +87,6 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                     setTimeout(function(){ 
                         loading.classList.replace('carregando', 'hide');
                         msgFimLista.classList.remove("hide"); }, 500);
-                    // console.log(res.allProfiles.length);
                 }
             });
         }
@@ -98,6 +97,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         if(user.length>0){
             getUser(user).then(res=> {
                 // console.log(res.profile);
+                loading.classList.replace('carregando', 'hide');
                 showProfile(res.profile,false);
             });
         }       
@@ -111,6 +111,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             for(cont=0;cont<imgCarregadas;cont++){
                 getUser(res.allProfiles[cont].login).then(res=> {
                     // console.log(res.profile);
+                    loading.classList.replace('carregando', 'hide');
                     showProfile(res.profile,true);
                 });
             }

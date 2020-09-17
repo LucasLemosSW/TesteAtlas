@@ -10,58 +10,68 @@ html{
 
 .menu-descricao{
     display: flex;
-    flex-direction:row;
+    flex-direction: column;
 }
+
 /* Geral*/
 
 /* Card de conteudo */
 
 #main{
-    margin-top: 3%;
+    margin-top: 0;
+    padding: 0;
 }
 
 /* Banner*/
+
 .banner{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    height: 200px;
+    height: 150px;
     /* background-color: blue; */
     background-image: url("../images/banner-fundo.jpg");
     background-repeat:no-repeat;
-    background-position:100% 98%;
-    background-size:100%;
+    background-position:50% 100%;
+    background-size:185%;
 }
 
 #nome-imagem-perfil-mobile{
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    /* background-color: aqua; */
 }
-
 #dados-perfil-mobile{
-    display: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    /* background-color: red; */
 }
 
 #nome-imagem-perfil{
-    display: flex;
+    display: none;
     flex-direction: row;
     width: 60%;
     height: 60%;
     /* background-color: aqua; */
 }
 
-#container-img-perfil{
-    width: 33.3%;
+#container-img-perfil {
+    width: 60%;
+    align-self: center;
 }
 
 #img-perfil{
     position: relative;
     border:5px solid lightgray;
-    width: 80%;
     margin-left:10%;
     top: 10%;
+    width: 80%;
+    margin-top: -100px;
     /* background-color: red; */
-    
 }
 
 .nome-nick{
@@ -73,11 +83,34 @@ html{
 
 .nome-nick div{
     display: flex; 
-    align-self: flex-end;
+    align-self: center;
 }
 
 .nome-nick h8{
     font-weight: 600;
+}
+
+.nome-nick a{
+    align-self: center;
+}
+
+.nome-nick a h1{
+    /* font-size: 1.5rem; */
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    align-self: center;
+    color: #162668;
+}
+
+.nome-nick div h6{
+    align-self: center;
+    font-family: Montserrat;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #90A4AE;
 }
 
 .img-icones{
@@ -93,12 +126,13 @@ html{
 }
 
 #dados-perfil{
-    display: flex;
+    display: none;
     justify-content: space-around;
     width: 40%;
     height: 30%;
     /* background-color: red; */
 }
+
 /* Banner*/
 
 /* SideBar */
@@ -116,29 +150,39 @@ html{
     padding: .400rem .90rem;
     font-size: 1.2rem;
     line-height: 2;
-    /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 
 .menu-nave{
-    margin-top: 10%;
-    width: 20%;
+    width: 100%;
+    margin-top: 0;
 }
+
+.menu-descricao ul{
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
 .navegacao{
     display: flex;
     flex-direction:column;
 }
+
+#tab-bar li{
+    width: 100%;
+}
 /* SideBar */
 
 /* Bio */
-
 .projetos-biografia{
     display: flex;
     flex-direction:column;
-    width: 80%;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
+    width: 100%;
 }
+
 .biografia{
     padding: 5%;
     font-family: Montserrat;
@@ -150,12 +194,14 @@ html{
     font-weight: 800;
     font-size: 18px;
     line-height: 25px;
-    }
+}
+
 .biografia p{
     font-weight: normal;
     font-size: 16px;
     line-height: 22px;
 }
+
 .biografia a{
     font-weight: 600;
     font-size: 18px;
@@ -163,6 +209,11 @@ html{
 /* Bio */
 
 /* Projetos */
+#repositorios{
+    font-family: Montserrat;
+    flex-direction: column;
+ }
+
 .col-md-8 a{
     font-family: Montserrat;
     font-style: normal;
@@ -171,6 +222,7 @@ html{
     line-height: 21px;
     color:#0366D6;
 }
+
 .col-md-8 p{
     font-family: Montserrat;
     font-style: normal;
@@ -205,122 +257,20 @@ html{
 }
 
 #lang-update{
-    padding-right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15px;
+    
+}
+
+#lang-update p{ 
+    margin: 0;
 }
 
 /* Projetos */
 
-/* conteudo end*/
-
-@media(max-width: 769px){
-
-    #main{
-        margin-top: 0;
-        padding: 0;
-    }
-    .banner{
-        background-position:50% 100%;
-        background-size:185%;
-    }
-    .menu-descricao{
-        flex-direction: column;
-    }
-    .menu-nave{
-        width: 100%;
-        margin-top: 0;
-    }
-    .menu-descricao ul{
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-    }
-     #repositorios{
-         font-family: Montserrat;
-        flex-direction: column;
-     }
-     .projetos-biografia{
-         width: 100%;
-     }
-
-     .banner{
-         height: 150px;
-     }
-     #nome-imagem-perfil{
-         display: none;
-     }
-
-     #dados-perfil{
-        display: none;
-    }
-
-    #nome-imagem-perfil-mobile{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        /* height: 60%; */
-        /* background-color: aqua; */
-    }
-
-    #dados-perfil-mobile{
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        /* height: 30%; */
-        /* background-color: red; */
-    }
-
-    #container-img-perfil {
-        width: 60%;
-        align-self: center;
-    }
-
-    #img-perfil{
-        position: relative;
-        border:5px solid lightgray;
-        width: 80%;
-        margin-top: -100px;
-        /* background-color: red; */
-    }
-
-    .nome-nick h1{
-        /* font-size: 1.5rem; */
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 36px;
-        align-self: center;
-        color: #162668;
-    }
-
-    .nome-nick div h6{
-        align-self: center;
-        font-family: Montserrat;
-        font-weight: 600;
-        margin-bottom: 0;
-        color: #90A4AE;
-    }
-
-    .nome-nick div{
-        display: flex; 
-        align-self: center;
-    }
-
-    #tab-bar li{
-        width: 100%;
-    }
-
-    #lang-update{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        
-    }
-    #lang-update p{ 
-        margin: 0;
-    }
-}
+/* conteudo */
 
 /* breakpoint para tablets */
 @media(min-width: 481px){
@@ -328,7 +278,53 @@ html{
 
 /* breakpoint para desktops */
 @media(min-width: 769px){
-    
+    #main{
+        margin-top: 3%;
+    }
+    .banner{
+        height: 200px;
+        background-position:100% 98%;
+        background-size:100%;
+    }
+    .menu-descricao{
+        flex-direction:row;
+    }
+    .menu-nave{
+        margin-top: 10%;
+        width: 20%;
+    }
+    .projetos-biografia{
+        width: 80%;
+    }
+    #nome-imagem-perfil{
+        display: flex;    
+    }
+    #dados-perfil{
+        display: flex;
+    }
+    #nome-imagem-perfil-mobile{
+        display: none;
+    }
+    #dados-perfil-mobile{
+        display: none;
+    }
+    #container-img-perfil{
+        width: 33.3%;
+    }
+    #img-perfil{
+        margin-top: 0;
+    }
+    .nome-nick div{
+        align-self: flex-end;
+    }
+    #lang-update{
+        flex-direction: column;
+        justify-content: start;
+        padding-right: 0;
+    }
+    .menu-descricao ul{
+        flex-direction: column;
+    }
 }
 
 
