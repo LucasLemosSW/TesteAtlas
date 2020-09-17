@@ -1,5 +1,6 @@
 .carregando{
-    align-self: center;
-    padding: 5em;
+    display: flex;
+    justify-content: center;
+    padding: 3em;
     /* background-color: aqua; */
 }

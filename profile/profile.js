@@ -35,12 +35,18 @@ const count = 8;
         
         if($(this).scrollTop() + $(this).height() == $(document).height()) {
             renderInit+=8;
-            carregando.classList.remove("hide");
-            setTimeout(function(){             
-                getUserRepo(usuario).then(res=> {
-                showRepos(res.repos,renderInit);
-                carregando.classList.add("hide");
-            }); }, 1000);
+                         
+            getUserRepo(usuario).then(res=> {
+                if(renderInit<res.repos.length){
+                    carregando.classList.replace('hide', 'carregando');
+                    setTimeout(function(){
+                        showRepos(res.repos,renderInit);
+                        carregando.classList.replace('carregando', 'hide');
+                    }, 1000);
+                }else{
+                    carregando.classList.replace('carregando', 'hide');
+                }
+            }); 
         }
     });
 

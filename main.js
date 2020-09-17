@@ -31,28 +31,17 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         const profileResponse = await fetch(
             `${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`
         );
-
-        // const repoResponse = await fetch (
-        //     `${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}&client_secret=${client_secret}`
-        // );
         
         const profile = await profileResponse.json();
-        // const repos = await repoResponse.json();
-        // return {profile,repos};
         return {profile};
     }
 
     async function getAllUsers(){
-
-        const allProfilesResponse = await fetch(
-            `${url}`
-        );
+        const allProfilesResponse = await fetch(`${url}`);
 
         const allProfiles = await allProfilesResponse.json();
         return {allProfiles};
     }
-    
-
 
     search_each.addEventListener("click",()=>{
         saiDaHome();
@@ -61,6 +50,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
     search.addEventListener("keyup", (e)=>{
         const user = e.target.value;
+        msgFimLista.classList.add("hide");
         procuraEspecifico(user);
     });
 
@@ -71,18 +61,11 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
             search_each.disabled=false;
     });
 
-    $('#profile').on('click', '#perfil', function (event) {
-        var botao = $(event);
-        console.log("aaki");
-        console.log(botao);
-    });
-
     search_all_home.addEventListener("click",procuraTodos);
 
     $(window).scroll(function() {
         let imgCarregadasAtual=imgCarregadas;
         if($(this).scrollTop() + $(this).height() == $(document).height()) {
-            
             
             getAllUsers().then(res=> {
 
@@ -100,8 +83,8 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                         }
                     }
                 }else{
-                    setTimeout(function(){ msgFimLista.classList.remove("hide"); }, 1000);
-                    console.log("Já rendenizou todas");
+                    setTimeout(function(){ msgFimLista.classList.remove("hide"); }, 500);
+                    // console.log(res.allProfiles.length);
                 }
             });
         }
@@ -114,8 +97,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                 // console.log(res.profile);
                 showProfile(res.profile,false);
             });
-        }
-            
+        }       
     }
     
     function procuraTodos(){
@@ -155,7 +137,6 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                                     </div>
                                 `;
         }
-
     }
 
 })();
