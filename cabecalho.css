@@ -1,0 +1,18 @@
+.cabecalho{
+    justify-content: start;
+}
+
+.img-github{
+    margin-left: 10%;
+    width: 10%;
+}
+
+@media(max-width: 481px){
+    .img-github{
+        margin-left: 5%;
+        width: 10%;
+    }
+    #cabecalho nav div img{
+        src: url("images/left_icon.png");
+    }
+}
