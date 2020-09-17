@@ -45,17 +45,17 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
 
     search_each.addEventListener("click",()=>{
         saiDaHome();
-        procuraEspecifico(search_home.value);
+        procuraEspecifico(search_home.value.trim());
     })
 
     search.addEventListener("keyup", (e)=>{
-        const user = e.target.value;
+        console.log(e.target.value.trim());
         msgFimLista.classList.add("hide");
-        procuraEspecifico(user);
+        procuraEspecifico(e.target.value.trim());
     });
 
     search_home.addEventListener("keyup", (e)=>{
-        if(e.target.value==null || e.target.value=="")
+        if(e.target.value==null || e.target.value.trim()=="")
             search_each.disabled=true;
         else
             search_each.disabled=false;
@@ -126,20 +126,37 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     }
 
     function showProfile(user,all){
-        // console.log(all);
-        if(all){
-            profile.innerHTML +=    `<div id="card-perfil-mobile" class=" card card-perfil" >
-                                        <img id="img-perfil-card"class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
-                                        <a id="label-perfil-card" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
-                                    </div>
-                                `;
-
-        }else{
+        // console.log(user);
+        if(user.message=="Not Found"){
             profile.innerHTML =    `<div id="card-perfil-mobile-busca" class="card card-perfil" >
-                                        <img class="card-img-top rounded-circle w-75 m-3" src="${user.avatar_url}" alt="foto usuario">
-                                        <a id="label-perfil-card" class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                        <img class="card-img-top rounded-circle w-50 m-3" " src="images/user_not_found.png" alt="foto usuario">
+                                        <a id="label-perfil-card" class="mb-3" href="#" target="_blanck">Não encontrado</a>
                                     </div>
-                                `;
+                                    `;
+        }
+        else if(user.documentation_url=="https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"){
+            profile.innerHTML =    `<div id="card-perfil-mobile-busca" class="card card-perfil" >
+                                        <img class="card-img-top rounded-circle w-50 m-3" " src="images/user_not_found.png" alt="foto usuario">
+                                        <h5>Limite de acesso excedido</h5>
+                                        <p>Tente acessar mais tarde :)</p>
+                                    </div>
+                                    `;
+        }
+        else{
+            if(all){
+                profile.innerHTML +=    `<div id="card-perfil-mobile" class=" card card-perfil" >
+                                            <img id="img-perfil-card"class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
+                                            <a id="label-perfil-card" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                        </div>
+                                    `;
+    
+            }else{
+                profile.innerHTML =    `<div id="card-perfil-mobile-busca" class="card card-perfil" >
+                                            <img class="card-img-top rounded-circle w-50 m-3" src="${user.avatar_url}" alt="foto usuario">
+                                            <a id="label-perfil-card" class="mb-3" href="./profile/profile.html?profile=${user.login}" target="_blanck">${user.login}</a>
+                                        </div>
+                                    `;
+            }
         }
     }
 

@@ -188,7 +188,7 @@ const count = 8;
                     date = new Date(repos[countRenderize].updated_at);
 
                     if(repos[countRenderize].language==null)
-                        language="Linguagem não informada."
+                        language=""
                     else
                         language=repos[countRenderize].language;
 
