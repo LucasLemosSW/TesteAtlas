@@ -16,6 +16,10 @@ html{
 
 /* Card de conteudo */
 
+#main{
+    margin-top: 3%;
+}
+
 /* Banner*/
 .banner{
     display: flex;
@@ -26,8 +30,16 @@ html{
     /* background-color: blue; */
     background-image: url("../images/banner-fundo.jpg");
     background-repeat:no-repeat;
-    background-position:90% 100%;
+    background-position:100% 98%;
     background-size:100%;
+}
+
+#nome-imagem-perfil-mobile{
+    display: none;
+}
+
+#dados-perfil-mobile{
+    display: none;
 }
 
 #nome-imagem-perfil{
@@ -57,6 +69,15 @@ html{
     flex-direction: column; 
     justify-content: flex-end;
     /* background-color: green; */
+}
+
+.nome-nick div{
+    display: flex; 
+    align-self: flex-end;
+}
+
+.nome-nick h8{
+    font-weight: 600;
 }
 
 .img-icones{
@@ -166,35 +187,137 @@ html{
     font-size: 8px;
     line-height: 7px;
 }
+
+.repo-language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    /* background-color: lightseagreen; */
+}
+
+#lang-update div p{
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    padding-left: 6px;
+}
+
+#lang-update{
+    padding-right: 0;
+}
+
 /* Projetos */
 
 /* conteudo end*/
 
+@media(max-width: 769px){
 
-
-@media(max-width: 481px){
+    #main{
+        margin-top: 0;
+        padding: 0;
+    }
+    .banner{
+        background-position:50% 100%;
+        background-size:185%;
+    }
     .menu-descricao{
         flex-direction: column;
     }
     .menu-nave{
         width: 100%;
+        margin-top: 0;
     }
     .menu-descricao ul{
         flex-direction: row;
+        justify-content: center;
         align-content: center;
     }
      #repositorios{
+         font-family: Montserrat;
         flex-direction: column;
      }
      .projetos-biografia{
          width: 100%;
      }
 
+     .banner{
+         height: 150px;
+     }
      #nome-imagem-perfil{
          display: none;
      }
 
      #dados-perfil{
         display: none;
+    }
+
+    #nome-imagem-perfil-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        /* height: 60%; */
+        /* background-color: aqua; */
+    }
+
+    #dados-perfil-mobile{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        /* height: 30%; */
+        /* background-color: red; */
+    }
+
+    #container-img-perfil {
+        width: 60%;
+        align-self: center;
+    }
+
+    #img-perfil{
+        position: relative;
+        border:5px solid lightgray;
+        width: 80%;
+        margin-top: -100px;
+        /* background-color: red; */
+    }
+
+    .nome-nick h1{
+        /* font-size: 1.5rem; */
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 36px;
+        align-self: center;
+        color: #162668;
+    }
+
+    .nome-nick div h6{
+        align-self: center;
+        font-family: Montserrat;
+        font-weight: 600;
+        margin-bottom: 0;
+        color: #90A4AE;
+    }
+
+    .nome-nick div{
+        display: flex; 
+        align-self: center;
+    }
+
+    #tab-bar li{
+        width: 100%;
+    }
+
+    #lang-update{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+    #lang-update p{ 
+        margin: 0;
     }
 }

@@ -5,6 +5,11 @@
 /* cabeçalho */
 
 /* Items */
+
+#main{
+    margin-top: 3%;
+}
+
 .card{
     justify-content:center;
 }
@@ -74,6 +79,12 @@ form.form-search:before {
     flex-direction: row;
     justify-content: space-between;
 }
+
+#msg-fim-lista{
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /* Items */
 
 /* Home */
@@ -105,7 +116,7 @@ form.form-search:before {
 }
 
 #search_all_home{
-    width: 45%;
+    width: 46.5%;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -117,7 +128,7 @@ form.form-search:before {
 }
 
 #search_each{
-    width: 45%;
+    width: 46.5%;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -130,7 +141,8 @@ form.form-search:before {
     /* Base Colors / White */
 
     color: #FFFFFF;
-    background: #6FCF97;
+    background: #58ad7a;
+    /* background: #6FCF97; */
 }
 /* Home */
 
@@ -198,6 +210,7 @@ form.form-search:before {
     }
 
     #main{
+        margin-top: 0;
         padding: 0;
     }
 

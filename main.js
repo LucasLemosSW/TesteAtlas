@@ -15,6 +15,7 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     
     const perfil = document.getElementById("perfil");
     const loading= document.getElementById("carregando");
+    const msgFimLista= document.getElementById("msg-fim-lista");
     const search= document.getElementById("search");
     const search_home= document.getElementById("search_home");
     
@@ -63,6 +64,13 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
         procuraEspecifico(user);
     });
 
+    search_home.addEventListener("keyup", (e)=>{
+        if(e.target.value==null || e.target.value=="")
+            search_each.disabled=true;
+        else
+            search_each.disabled=false;
+    });
+
     $('#profile').on('click', '#perfil', function (event) {
         var botao = $(event);
         console.log("aaki");
@@ -74,20 +82,26 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
     $(window).scroll(function() {
         let imgCarregadasAtual=imgCarregadas;
         if($(this).scrollTop() + $(this).height() == $(document).height()) {
-            loading.classList.remove("hide");
-            imgCarregadas+=10;
+            
+            
             getAllUsers().then(res=> {
-                
-                for(cont=imgCarregadasAtual;cont<imgCarregadas;cont++){
-                    if(imgCarregadasAtual<res.allProfiles.length){
-                        getUser(res.allProfiles[cont].login).then(res=> {
-                            showProfile(res.profile,true);
-                            loading.classList.add("hide");
-                        });
-                    }else{
-                        // console.log("É maior");
-                        loading.classList.add("hide");
+
+                if(imgCarregadas<res.allProfiles.length){
+                    loading.classList.remove("hide");
+                    imgCarregadas+=10;
+                    for(cont=imgCarregadasAtual;cont<imgCarregadas;cont++){
+                        if(imgCarregadasAtual<res.allProfiles.length){
+                            getUser(res.allProfiles[cont].login).then(res=> {
+                                showProfile(res.profile,true);
+                                setTimeout(function(){ loading.classList.add("hide"); }, 1000);
+                            });
+                        }else{
+                            setTimeout(function(){ loading.classList.add("hide"); }, 1000);
+                        }
                     }
+                }else{
+                    setTimeout(function(){ msgFimLista.classList.remove("hide"); }, 1000);
+                    console.log("Já rendenizou todas");
                 }
             });
         }

@@ -6,7 +6,10 @@ const count = 8;
 (function(){
 
     const nomeImagemPerfil= document.getElementById("nome-imagem-perfil");
+    const nomeImagemPerfilMobile= document.getElementById("nome-imagem-perfil-mobile");
     const dadosPerfil= document.getElementById("dados-perfil");
+    const dadosPerfilMobile= document.getElementById("dados-perfil-mobile");
+
     const biografia= document.getElementById("biografia");
     const repositorios= document.getElementById("repositorios");
     const carregando= document.getElementById("carregando");
@@ -33,11 +36,11 @@ const count = 8;
         if($(this).scrollTop() + $(this).height() == $(document).height()) {
             renderInit+=8;
             carregando.classList.remove("hide");
-            // carregando.classList.add("carregando");
-            getUserRepo(usuario).then(res=> {
+            setTimeout(function(){             
+                getUserRepo(usuario).then(res=> {
                 showRepos(res.repos,renderInit);
                 carregando.classList.add("hide");
-            });
+            }); }, 1000);
         }
     });
 
@@ -84,21 +87,23 @@ const count = 8;
     });
 
     function showProfile(user){
-        nomeImagemPerfil.innerHTML = `
+        let stringBlocoHtml=`
                 <div id="container-img-perfil">
                     <img id = "img-perfil" class="card-img-top rounded-circle " src="${user.avatar_url}" alt="foto usuario">
                 </div>
                 <div class="nome-nick" >
                     <h1>${user.name}</h1>
-                    <div style="display: flex; align-self: flex-end;">
-                        <img class="img-icones" src="../images/nick.png" alt="projetos">
-                        <h8>${user.login}</h8>
+                    <div>
+                        <img class="img-icones" src="../images/nick_mobile.png" alt="projetos">
+                        <h6>${user.login}</h6>
                     </div>
                 </div>`;
+        nomeImagemPerfil.innerHTML=stringBlocoHtml;
+        nomeImagemPerfilMobile.innerHTML=stringBlocoHtml;
     }
 
     function showFollower(user){
-        dadosPerfil.innerHTML = `
+        let stringBlocoHtml= `
         <div class="nome-nick">
             <div style="display: flex; justify-content: center; align-items: center; height: 50%;">
                 <img class="img-icones" src="../images/seguindo.png" alt="seguindo">
@@ -120,6 +125,8 @@ const count = 8;
             </div>
             <h6>Seguidores</h6>
         </div>`;
+        dadosPerfil.innerHTML=stringBlocoHtml;
+        dadosPerfilMobile.innerHTML=stringBlocoHtml;
     }
 
     function showBio(user){
@@ -163,6 +170,7 @@ const count = 8;
                 if(countRenderize<(repos.length)){
 
                     date = new Date(repos[countRenderize].updated_at);
+
                     if(repos[countRenderize].language==null)
                         language="Linguagem não informada."
                     else
@@ -179,9 +187,12 @@ const count = 8;
                                 <a href="${repos[countRenderize].html_url}">${repos[countRenderize].name}</a>
                                 <p>${description}</p>
                             </div>
-                            <div class="col-md-3" >
-                                <p>${language}</p>
-                                <p>Atualizado em ${date.getUTCDay()}/${date.getUTCMonth()+1}/${date.getUTCFullYear()}</p>
+                            <div id="lang-update" class="col-md-3" >
+                                <div class="row">
+                                    <span class="repo-language-color ${repos[countRenderize].language}"></span>    
+                                    <p>${language}</p>
+                                </div>
+                                <p>Atualizado em ${date.getUTCDate()}/${date.getUTCMonth()+1}/${date.getUTCFullYear()}</p>
                             </div>
                         </div>
                     </li>`;                
