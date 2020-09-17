@@ -321,3 +321,17 @@ html{
         margin: 0;
     }
 }
+
+/* breakpoint para tablets */
+@media(min-width: 481px){
+}
+
+/* breakpoint para desktops */
+@media(min-width: 769px){
+    
+}
+
+
+/* breakpoint para desktops grandes */
+@media(min-width: 1201px){
+}

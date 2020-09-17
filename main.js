@@ -76,14 +76,17 @@ const client_secret = "d20dcf4c0128ea61b2ead9f770cdd12017647259";
                         if(imgCarregadasAtual<res.allProfiles.length){
                             getUser(res.allProfiles[cont].login).then(res=> {
                                 showProfile(res.profile,true);
-                                setTimeout(function(){ loading.classList.add("hide"); }, 1000);
+                                setTimeout(function(){ loading.classList.replace('hide', 'carregando');}, 1000);
+                                
                             });
                         }else{
-                            setTimeout(function(){ loading.classList.add("hide"); }, 1000);
+                            setTimeout(function(){ loading.classList.replace('carregando', 'hide'); }, 1000);
                         }
                     }
                 }else{
-                    setTimeout(function(){ msgFimLista.classList.remove("hide"); }, 500);
+                    setTimeout(function(){ 
+                        loading.classList.replace('carregando', 'hide');
+                        msgFimLista.classList.remove("hide"); }, 500);
                     // console.log(res.allProfiles.length);
                 }
             });

@@ -7,7 +7,12 @@
 /* Items */
 
 #main{
-    margin-top: 3%;
+    margin-top: 0;
+    padding: 0;
+}
+
+#card-principal{
+    padding: 0;
 }
 
 .card{
@@ -15,23 +20,42 @@
 }
 
 .card-perfil{
-    width: 20%;
-    height: 15rem;
+    width: 100%;
+    height: 50px;
     align-items: center;
 }
 
+#card-perfil-mobile{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    height: 5%;
+}
+
+#card-perfil-mobile-busca{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 5%;
+}
+
+.card-img-top{
+    width: 25%;
+}
+
 #img-perfil-card{
-    width: 75%;
+    width: 16.6%;
+    margin: 15px;
 }
 
 #label-perfil-card{
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 36px;
     color: #162668;
-    margin-top: 20px;
+    margin: 0px;
 }
 
 .show-cards{
@@ -40,15 +64,16 @@
 }
 
 .profiles{
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     /* background-color: yellow; */
-    width: 90%;
+    width: 100%;
     align-self: center;
-    margin-top: 5%;
+    margin: 0;
 }
 
 input.search-query {
@@ -76,8 +101,11 @@ form.form-search:before {
 
 .busca{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.busca h2{
+    display: none;
 }
 
 #msg-fim-lista{
@@ -89,17 +117,17 @@ form.form-search:before {
 
 /* Home */
 .home{
-    width: 100vw;
-    height: 100vh;
-    background: #FFFFFF;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: #FFFFFF;
     align-items: center
 }
 
 .box {
-    width: 420px;
+    width: 250px;
     height: 377px;
     background: #fff;
     display: flex;
@@ -134,19 +162,12 @@ form.form-search:before {
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
-    /* identical to box height, or 137% */
-
     text-align: center;
-
-    /* Base Colors / White */
-
     color: #FFFFFF;
     background: #58ad7a;
     /* background: #6FCF97; */
 }
 /* Home */
-
-
 
 /* geral */
 .hide{
@@ -160,96 +181,51 @@ form.form-search:before {
 }
 /* geral */
 
-/* breakpoint para smartphones */
-@media(max-width: 481px){
 
-    .home{
-        width: 100vw;
-        height: 100vh;
-        background: #FFFFFF;
-        align-items: center
-    }
-    
+/* breakpoint para tablets */
+@media(min-width: 481px){
+}
+
+/* breakpoint para desktops */
+@media(min-width: 769px){
     .box {
-        width: 250px;
+        width: 420px;
         height: 377px;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
-
     .busca{
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
     }
-    
     .busca h2{
-        display: none;
+        display: flex;
     }
-
     .card-perfil{
-        width: 100%;
-        height: 50px;
-        align-items: center;
+        width: 20%;
+        height: 15rem;
     }
-
     #card-perfil-mobile{
         display: flex;
-        flex-direction: row;
-        justify-content: start;
-        height: 5%;
-    }
-
-    #card-perfil-mobile-busca{
-        display: flex;
         flex-direction: column;
         justify-content: center;
         height: 5%;
     }
-
-    .card-img-top{
-        width: 25%;
-    }
-
     #main{
-        margin-top: 0;
-        padding: 0;
+        margin-top: 3%;
     }
-
-    #card-principal{
-        padding: 0;
-    }
-
     .profiles{
-        margin: 0;
-        width: 100%;
+        width: 90%;
+        margin-top: 5%;
     }
-
     #img-perfil-card{
-        width: 16.6%;
-        margin: 15px;
+        width: 75%;
     }
-
     #label-perfil-card{
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 36px;
-        color: #162668;
-        margin: 0px;
+        font-size: 18px;
+        margin-top: 20px;
     }
-}
-
-/* breakpoint para tablets */
-@media(max-width: 481px){
-}
-
-/* breakpoint para tablets */
-@media(max-width: 769px){
 }
 
 /* breakpoint para desktops grandes */
-@media(max-width: 1201px){
+@media(min-width: 1201px){
 }
 
